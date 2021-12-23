@@ -58,6 +58,42 @@ function __gm__() {
 				}
 			},
 			
+			{
+				txt:"加载死循环临时处理", 
+				click:function(){
+					var dd =_dg.poolMgr.poolDict["ObjectDrawCeiling"].creeatorFunc();
+					if(!window.saveSetUp222) {
+						window.saveSetUp222 = dd.constructor.prototype.setUp222;
+					}
+					dd.constructor.prototype.setUp222 = function(areaInfo){
+						this.setupFromWalls(areaInfo);
+					}
+					dd.recover2pool();
+					alert("点击此按钮后加载方案，加载完成后点击【加载后墙面消失临时处理】，然后保存方案，刷新网页再进行其他操作")
+				}
+			},
+			
+			{
+				txt:"加载后墙面消失临时处理", 
+				click:function(){
+					var floors = _dg.floorMgr._floors;
+					for(var i = 0; i < floors.length; i++) {
+						if(floors[i].roof && floors[i].roof.drawCeiling) {
+							floors[i].roof.drawCeiling.visible = true;
+						}
+						if(floors[i].floor && floors[i].floor.drawCeiling) {
+							floors[i].floor.drawCeiling.visible = true;
+						}
+					}
+					var faces = [..._dg.faceMgr._crossFaces];
+					for(var i = 0; i < faces.length; i++) {
+						if(faces[i].roomWall && faces[i].roomWall.drawCeiling) {
+							faces[i].roomWall.drawCeiling.visible=true
+						}
+					}
+				}
+			},
+			
 		];
 		
 		for(var i = 0; i < option.length; i++) {
