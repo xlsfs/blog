@@ -94,6 +94,18 @@ function __gm__() {
 				}
 			},
 			
+			{
+				txt:"重置所有吊顶", 
+				click:function(){
+					var floors = _dg.floorMgr._floors;
+					for(var i = 0; i < floors.length; i++) {
+						if(floors[i].roof && floors[i].roof.drawCeiling) {
+							floors[i].roof.drawCeiling.setupFromWalls(floors[i].roof.areaInfo);
+						}
+					}
+				}
+			},
+			
 		];
 		
 		for(var i = 0; i < option.length; i++) {
