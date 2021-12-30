@@ -106,6 +106,22 @@ function __gm__() {
 				}
 			},
 			
+			{
+				txt:"恢复门", 
+				click:function(){
+					var darr = []
+					for(var i = 0; i < _dg.main.scene.children.length; i++) {
+						var d = _dg.main.scene.children[i];
+						if(d.isObjectDoorOrWindow) {
+							if(d.getHeight() < 1){
+								d.setHeight(2200);
+								d.setUpdate();
+							}
+						}
+					}
+				}
+			},
+			
 		];
 		
 		for(var i = 0; i < option.length; i++) {
