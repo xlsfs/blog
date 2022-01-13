@@ -113,8 +113,20 @@ function __gm__() {
 					for(var i = 0; i < _dg.main.scene.children.length; i++) {
 						var d = _dg.main.scene.children[i];
 						if(d.isObjectDoorOrWindow) {
+							var isChange = false;
 							if(d.getHeight() < 1){
 								d.setHeight(2200);
+								isChange = true;
+							}
+							if(d.getWidth() < 1){
+								d.setWidth(700);
+								isChange = true;
+							}
+							// if(d.getThickness() < 1){
+							// 	d.setThickness(200);
+							// 	isChange = true;
+							// }
+							if (isChange) {
 								d.setUpdate();
 							}
 						}
