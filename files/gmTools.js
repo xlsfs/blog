@@ -74,6 +74,16 @@ function __gm__() {
 			},
 			
 			{
+				txt:"220221加载方案卡死处理", 
+				click:function(){
+					areaInfoData=_dg.poolMgr.getItem("AreaInfoData")
+					areaInfoData.constructor.prototype.recoverPos = function(e){e&&(e.isCurving?e.center&&((e.center.recover2pool&&e.center.recover2pool()),e.center=null):e.pos&&((e.pos.recover2pool&&e.pos.recover2pool()),e.pos=null))}
+					areaInfoData.recover2pool();
+					alert("点击此按钮后加载方案，加载完成后检查方案，然后保存方案，再刷新网页再进行其他操作")
+				}
+			},
+			
+			{
 				txt:"加载后墙面消失临时处理", 
 				click:function(){
 					var floors = _dg.floorMgr._floors;
